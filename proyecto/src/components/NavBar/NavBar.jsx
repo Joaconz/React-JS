@@ -31,6 +31,7 @@ function NavBar() {
       </Container>
     </Navbar>
   );
+
 }
 
 export default NavBar;
