@@ -30,7 +30,7 @@ const ItemCount = ({ stock, initial }) => {
     return (
         <>
             <button onClick={resta}>-</button>
-            <h3>{cant}</h3>
+            <span>{cant}</span>
             <button onClick={suma}>+</button>
             <button onClick={onAdd}>Agregar al carrito</button>
         </>
