@@ -1,6 +1,5 @@
 import ItemList from "../ItemList/ItemList"
 import { useEffect, useState } from "react"
-import getFetch from "../../getFetch/getFetch";
 
 
 const ItemListContainer = ({saludo}) => {
