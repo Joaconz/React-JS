@@ -1,4 +1,5 @@
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import CartWidget from '../CartWidget/CartWidget';
 
 function NavBar() {
@@ -6,26 +7,20 @@ function NavBar() {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand href="#home">Andre Cucina</Navbar.Brand>
+        <Link to='/'>Andre Cucina</Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#features">Inicio</Nav.Link>
-            <Nav.Link href="#pricing">Sobre nosotros</Nav.Link>
-            <Nav.Link href='#'>Cómo comprar</Nav.Link>
-            <NavDropdown title="Delicias" id="collasible-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Tortas</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Galletas</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Panificados</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">Sin Tacc</NavDropdown.Item>
-            </NavDropdown>
-            <Nav.Link href="#deets">Contacto</Nav.Link>
+            <Link to="/">Inicio</Link>
+            <Link to='/sobre-nosotros'>Sobre nosotros</Link>
+            <Link to='/categoria/electronics'>Mouse</Link>
+            <Link to="/categoria/jewelery">Teclados</Link>
+            <Link to='/categoria/luces'>Luces</Link>
           </Nav>
           <Nav>
-            <Nav.Link href="#">
+            <Link to='/cart'>
               <CartWidget />
-            </Nav.Link>
+            </Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
