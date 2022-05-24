@@ -7,7 +7,7 @@ function NavBar() {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
-        <Link to='/'>Andre Cucina</Link>
+        <Link to='/'>CYD</Link> {/*Custom Your Desk*/}
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
