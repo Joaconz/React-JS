@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Badge, Button } from "react-bootstrap";
 
-const ItemCount = ({ stock, initial, onAdd }) => {
+const ItemCount = ({ stock, initial, onAdd}) => {
 
     const [cant, setCant] = useState(initial);
 
@@ -24,13 +24,14 @@ const ItemCount = ({ stock, initial, onAdd }) => {
 
     }
 
+
     return (
         <>
 
             <Button variant="dark" onClick={resta}>-</Button>
             <span style={{margin:10}}>{cant}</span>
             <Button variant="dark" onClick={suma}>+</Button> 
-            <Button variant="dark" onClick={onAdd}>Agregar al carrito</Button>
+            <Button variant="dark" onClick={()=>onAdd(cant)}>Agregar al carrito</Button>
         </>
     )
 }

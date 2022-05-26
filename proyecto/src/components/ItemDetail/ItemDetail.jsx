@@ -1,16 +1,22 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Button, Card, Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { CartContext } from "../../context/CartContext";
 import ItemCount from "../ItemCount/ItemCount";
 
 const ItemDetail = ({ product }) => {
   const [estado, setEstado] = useState("agregar");
 
+  const cartContext = useContext(CartContext);
+  const { addToCart, cart } = cartContext;
+
   //count, estado
   //onAdd, funcion
-  const onAdd = () => {
+  const onAdd = (cant) => {
     setEstado("opciones");
-    console.log("onAdd");
+    addToCart({product, cant: cant})
+    console.log(cant);
+    console.log(cart);
   };
 
   return (
