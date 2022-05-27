@@ -10,13 +10,10 @@ const ItemDetail = ({ product }) => {
   const cartContext = useContext(CartContext);
   const { addToCart, cart } = cartContext;
 
-  //count, estado
-  //onAdd, funcion
+
   const onAdd = (cant) => {
     setEstado("opciones");
-    addToCart({product, cant: cant})
-    console.log(cant);
-    console.log(cart);
+    addToCart({...product, cant: cant})
   };
 
   return (
