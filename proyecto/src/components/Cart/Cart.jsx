@@ -9,7 +9,7 @@ const Cart = () => {
   return (
     <>
       {cart.map((prod) => (
-        <>
+        <div key={prod.id}>
           <Card style={{ width: "18rem" }}>
             <Card.Img variant="top" src={prod.image} />
             <Card.Body>
@@ -17,11 +17,12 @@ const Cart = () => {
               <Card.Text>
                 {prod.description}
               </Card.Text>
+              <Card.Text>{prod.cant}</Card.Text>
               <button onClick={()=>removeItem(prod.id)}>-</button>
               <button onClick={clearCart}>clear</button>
             </Card.Body>
           </Card>
-        </>
+          </div>
       ))}
     </>
   );

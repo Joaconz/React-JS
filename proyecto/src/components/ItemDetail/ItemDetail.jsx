@@ -13,7 +13,7 @@ const ItemDetail = ({ product }) => {
 
   const onAdd = (cant) => {
     setEstado("opciones");
-    addToCart({...product, cant: cant})
+    addToCart(product, cant, product.id)
   };
 
   return (
