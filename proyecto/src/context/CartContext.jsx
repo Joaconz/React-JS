@@ -40,31 +40,32 @@ const CartProvider = (props) => {
   };
 
   const quantityInCart = () => {
-    //return cart.reduce ((counter, products) => counter += products.cant, 0)
-    /**/
+    return cart.reduce ((counter, products) => counter += products.cant, 0)
+    /*
     let value = 0;
     for (let i = 0; i < cart.length; i++) {
       value += cart[i].cant
       console.log(value);
       setQuantityCart(value)
     }
-    return quantityCart
+    return quantityCart*/
     
   }
 
   const totalPrice = () => {
-    let value = 0;
+    return cart.reduce ((counter, products) => counter += (products.cant * products.price), 0)
+    /*let value = 0;
     for (let i = 0; i < cart.length; i++) {
       value += cart[i].cant * cart[i].price
       console.log(value);
       setTotal(value)
     }
-    return total
+    return total*/
   }
 
   return (
     <>
-      <CartContext.Provider value={{ cart, addToCart, clearCart, removeItem, quantityCart, quantityInCart, totalPrice, total }}>
+      <CartContext.Provider value={{ cart, addToCart, clearCart, removeItem, quantityCart, quantityInCart, totalPrice }}>
         {props.children}
       </CartContext.Provider>
     </>

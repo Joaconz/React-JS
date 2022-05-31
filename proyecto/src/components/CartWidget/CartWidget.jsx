@@ -13,9 +13,20 @@ const CartWidget = () => {
     <>
       <Link to="/cart">
         <Button variant="primary">
-          <BsFillBagFill /><Badge bg="secondary">{
-          quantityInCart
-          }</Badge>
+          <BsFillBagFill />
+          {quantityInCart() > 0? 
+          
+          (<Badge bg="secondary">{
+          quantityInCart()
+          }</Badge>)
+          
+          : 
+          (<></>)
+          
+          }
+          
+          
+          
         </Button>
         
       </Link>
