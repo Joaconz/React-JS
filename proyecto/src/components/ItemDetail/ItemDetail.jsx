@@ -8,7 +8,7 @@ const ItemDetail = ({ product }) => {
   const [estado, setEstado] = useState("agregar");
 
   const cartContext = useContext(CartContext);
-  const { addToCart, cart } = cartContext;
+  const { addToCart } = cartContext;
 
 
   const onAdd = (cant) => {

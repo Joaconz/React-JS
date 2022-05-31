@@ -5,17 +5,20 @@ export const CartContext = createContext();
 const CartProvider = (props) => {
   const [cart, setCart] = useState([]);
   const [quantityCart, setQuantityCart] = useState(0);
-  //const [total, setTotal] = useState()
+  const [total, setTotal] = useState()
 
   //anadir al carrito
   const addToCart = (item, cant, id) => {
     const newItem = { ...item, cant };
     isInCart(id, newItem);
+    console.log(cart)
   };
 
   //vaciar carrito
   const clearCart = () => {
     setCart([]);
+    setTotal(0);
+    setQuantityCart(0);
   };
 
   //eliminar item del carrito
@@ -37,12 +40,31 @@ const CartProvider = (props) => {
   };
 
   const quantityInCart = () => {
+    //return cart.reduce ((counter, products) => counter += products.cant, 0)
+    /**/
+    let value = 0;
+    for (let i = 0; i < cart.length; i++) {
+      value += cart[i].cant
+      console.log(value);
+      setQuantityCart(value)
+    }
+    return quantityCart
     
+  }
+
+  const totalPrice = () => {
+    let value = 0;
+    for (let i = 0; i < cart.length; i++) {
+      value += cart[i].cant * cart[i].price
+      console.log(value);
+      setTotal(value)
+    }
+    return total
   }
 
   return (
     <>
-      <CartContext.Provider value={{ cart, addToCart, clearCart, removeItem }}>
+      <CartContext.Provider value={{ cart, addToCart, clearCart, removeItem, quantityCart, quantityInCart, totalPrice, total }}>
         {props.children}
       </CartContext.Provider>
     </>

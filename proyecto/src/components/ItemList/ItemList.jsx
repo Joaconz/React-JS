@@ -1,9 +1,10 @@
 import Item from "../Item/Item"
 import { Spinner } from "react-bootstrap";
+import { memo } from "react";
 
 
 
-const ItemList = ({products}) => {
+const ItemList = memo(({products}) => {
 
   return (
     <div className="product-list-container">
@@ -33,7 +34,8 @@ const ItemList = ({products}) => {
         )}
     </div>
   );
-};
+}, (oldProps, newProps) => oldProps.products.length === newProps.products.length
+)
 
 
 export default ItemList
