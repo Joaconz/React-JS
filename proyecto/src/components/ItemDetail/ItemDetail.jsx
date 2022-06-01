@@ -18,7 +18,7 @@ const ItemDetail = ({ product }) => {
 
   return (
     <div>
-      {product.length != 0 ? (
+      {product? (
         <>
           <Card style={{ width: "18rem" }}>
             <Card.Img variant="top" src={product.image} />
