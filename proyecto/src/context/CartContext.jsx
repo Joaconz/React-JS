@@ -41,26 +41,11 @@ const CartProvider = (props) => {
 
   const quantityInCart = () => {
     return cart.reduce ((counter, products) => counter += products.cant, 0)
-    /*
-    let value = 0;
-    for (let i = 0; i < cart.length; i++) {
-      value += cart[i].cant
-      console.log(value);
-      setQuantityCart(value)
-    }
-    return quantityCart*/
     
   }
 
   const totalPrice = () => {
     return cart.reduce ((counter, products) => counter += (products.cant * products.price), 0)
-    /*let value = 0;
-    for (let i = 0; i < cart.length; i++) {
-      value += cart[i].cant * cart[i].price
-      console.log(value);
-      setTotal(value)
-    }
-    return total*/
   }
 
   return (
