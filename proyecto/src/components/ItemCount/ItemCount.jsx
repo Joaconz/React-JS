@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Badge, Button } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 
 const ItemCount = ({ stock, initial, onAdd}) => {
 

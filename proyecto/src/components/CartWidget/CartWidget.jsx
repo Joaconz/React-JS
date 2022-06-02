@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { Badge, Button } from "react-bootstrap";
 import { BsFillBagFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
@@ -6,7 +6,7 @@ import { CartContext } from "../../context/CartContext";
 
 const CartWidget = () => {
   const cartContext = useContext(CartContext);
-  const { quantityCart, quantityInCart, cart } = cartContext;
+  const { quantityInCart } = cartContext;
   
 
   return (

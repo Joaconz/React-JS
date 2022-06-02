@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import { getDocsFromFirebase } from "../../Helpers/GetDocsFromFirebase";
 import {
   collection,
-  getDocs,
   getFirestore,
   query,
   where,
