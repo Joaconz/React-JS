@@ -14,7 +14,7 @@ const ItemDetailContainer = () => {
     getDoc(itemFirebase)
       .then((resp) => {
         if (resp.size === 0) {
-          console.log("No existe");
+          console.log("Doesn't exist");
         } else {
           setProduct({ id: resp.id, ...resp.data() });
         }

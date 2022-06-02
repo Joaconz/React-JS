@@ -14,9 +14,7 @@ function App() {
 		<CartProvider>
 			<BrowserRouter>
 				<div className="App">
-					<NavBar
-						componente={() => ItemListContainer({ saludo: 'Hola soy el componente contenedor' })}
-					></NavBar>
+					<NavBar/>
 					<Routes>
 						<Route path="/" element={<ItemListContainer />} />
 						<Route path="/categoria/:category" element={<ItemListContainer />} />

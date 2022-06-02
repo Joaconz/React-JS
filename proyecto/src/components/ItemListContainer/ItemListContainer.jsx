@@ -1,6 +1,7 @@
 import ItemList from "../ItemList/ItemList";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { getDocsFromFirebase } from "../../Helpers/GetDocsFromFirebase";
 import {
   collection,
   getDocs,
@@ -8,6 +9,7 @@ import {
   query,
   where,
 } from "firebase/firestore";
+
 
 const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
@@ -24,31 +26,9 @@ const ItemListContainer = () => {
         itemsFirebase,
         where("category", "==", category)
       );
-      getDocs(itemsFirebaseFilter)
-        .then((resp) => {
-          if (resp.size === 0) {
-            console.log("No existe");
-          } else {
-            setProducts(
-              resp.docs.map((prod) => ({ id: prod.id, ...prod.data() }))
-            );
-          }
-        })
-
-        .catch((err) => console.log(err));
+      getDocsFromFirebase(itemsFirebaseFilter, setProducts);
     } else {
-      getDocs(itemsFirebase)
-        .then((resp) => {
-          if (resp.size === 0) {
-            console.log("No existe");
-          } else {
-            setProducts(
-              resp.docs.map((prod) => ({ id: prod.id, ...prod.data() }))
-            );
-          }
-        })
-
-        .catch((err) => console.log(err));
+      getDocsFromFirebase(itemsFirebase, setProducts);
     }
   }, [category]);
 

@@ -1,6 +1,6 @@
 import Item from "../Item/Item"
-import { Spinner } from "react-bootstrap";
 import { memo } from "react";
+import LoadingSpinnet from "../../Helpers/LoadingSpinnet";
 
 
 
@@ -28,9 +28,7 @@ const ItemList = memo(({products}) => {
             }
           </>
         ) : (
-          <Spinner animation="border" role="status">
-            <span className="visually-hidden">Loading...</span>
-          </Spinner>
+          <LoadingSpinnet/>
         )}
     </div>
   );

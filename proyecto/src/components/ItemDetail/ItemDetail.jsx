@@ -1,18 +1,19 @@
 import { useContext, useState } from "react";
-import { Button, Card, Spinner } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
+import LoadingSpinnet from "../../Helpers/LoadingSpinnet";
 import ItemCount from "../ItemCount/ItemCount";
 
 const ItemDetail = ({ product }) => {
-  const [estado, setEstado] = useState("agregar");
+  const [estado, setEstado] = useState("add");
 
   const cartContext = useContext(CartContext);
   const { addToCart } = cartContext;
 
 
   const onAdd = (cant) => {
-    setEstado("opciones");
+    setEstado("options");
     addToCart(product, cant, product.id)
   };
 
@@ -26,8 +27,8 @@ const ItemDetail = ({ product }) => {
               <Card.Title>{product.title}</Card.Title>
               <Card.Text>{product.description}</Card.Text>
 
-              {estado === "agregar" ? (
-                <ItemCount stock={10} initial={1} onAdd={onAdd} />
+              {estado === "add" ? (
+                <ItemCount stock={product.stock} initial={1} onAdd={onAdd} />
               ) : (
                 <>
                   <Link to="/cart">
@@ -42,9 +43,7 @@ const ItemDetail = ({ product }) => {
           </Card>
         </>
       ) : (
-        <Spinner animation="border" role="status">
-          <span className="visually-hidden">Loading...</span>
-        </Spinner>
+        <LoadingSpinnet/>
       )}
     </div>
   );
