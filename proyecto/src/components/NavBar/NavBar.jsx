@@ -13,9 +13,12 @@ function NavBar() {
           <Nav className="me-auto">
             <Link to="/">Inicio</Link>
             <Link to='/sobre-nosotros'>Sobre nosotros</Link>
-            <Link to='/categoria/electronics'>Mouse</Link>
-            <Link to="/categoria/jewelery">Teclados</Link>
+            <Link to='/categoria/mouse'>Mouse</Link>
+            <Link to="/categoria/teclados">Teclados</Link>
             <Link to='/categoria/luces'>Luces</Link>
+            <Link to='/categoria/mousepad'>Mousepads</Link>
+            <Link to="/categoria/auriculares">Auriculares</Link>
+
           </Nav>
           <Nav>
             <Link to='/cart'>

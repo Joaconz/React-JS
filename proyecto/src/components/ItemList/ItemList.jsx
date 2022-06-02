@@ -1,9 +1,10 @@
 import Item from "../Item/Item"
-import { Spinner } from "react-bootstrap";
+import { memo } from "react";
+import LoadingSpinnet from "../../Helpers/LoadingSpinnet";
 
 
 
-const ItemList = ({products}) => {
+const ItemList = memo(({products}) => {
 
   return (
     <div className="product-list-container">
@@ -27,13 +28,12 @@ const ItemList = ({products}) => {
             }
           </>
         ) : (
-          <Spinner animation="border" role="status">
-            <span className="visually-hidden">Loading...</span>
-          </Spinner>
+          <LoadingSpinnet/>
         )}
     </div>
   );
-};
+}, (oldProps, newProps) => oldProps.products.length === newProps.products.length
+)
 
 
 export default ItemList

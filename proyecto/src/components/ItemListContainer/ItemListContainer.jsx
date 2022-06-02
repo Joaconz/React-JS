@@ -1,35 +1,42 @@
-import ItemList from "../ItemList/ItemList"
-import { useEffect, useState } from "react"
+import ItemList from "../ItemList/ItemList";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { getDocsFromFirebase } from "../../Helpers/GetDocsFromFirebase";
+import {
+  collection,
+  getDocs,
+  getFirestore,
+  query,
+  where,
+} from "firebase/firestore";
 
 
 const ItemListContainer = () => {
-
   const [products, setProducts] = useState([]);
 
-  const { id }=useParams()
-  
-    const getFetch = async () => {
-      const resp = await fetch ('https://fakestoreapi.com/products')
-      const data = await resp.json()
-      if (id) {
-        const filtrado = data.filter((prods)=> prods.category === id)
-        setProducts(filtrado)
-      } else {
-        setProducts(data);
-      }
-        }
+  const { category } = useParams();
 
   useEffect(() => {
-    getFetch();
-  }, [id]);
+    const db = getFirestore();
+
+    const itemsFirebase = collection(db, "items");
+
+    if (category) {
+      const itemsFirebaseFilter = query(
+        itemsFirebase,
+        where("category", "==", category)
+      );
+      getDocsFromFirebase(itemsFirebaseFilter, setProducts);
+    } else {
+      getDocsFromFirebase(itemsFirebase, setProducts);
+    }
+  }, [category]);
 
   return (
     <div>
-      <ItemList products={products}/>
-      </div>
-    
-  )
-}
+      <ItemList products={products} />
+    </div>
+  );
+};
 
-export default ItemListContainer
+export default ItemListContainer;
