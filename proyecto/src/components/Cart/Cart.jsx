@@ -1,17 +1,22 @@
+import React from "react";
 import { addDoc, collection, getFirestore } from "firebase/firestore";
 import { useContext, useState } from "react";
 import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
+import LoadingSpinnet from "../../Helpers/LoadingSpinnet";
 
 const Cart = () => {
   const cartContext = useContext(CartContext);
   const { cart, removeItem, clearCart, totalPrice } = cartContext;
   const [orderGenerated, setOrderGenerated] = useState(false)
+  const [orderId, setOrderId] = useState(0)
 
   function generateOrder() {
     let order = {}
-    
+    const date = new Date()
+    const [month, day, year] = [date.getMonth() + 1, date.getDate(), date.getFullYear()];
+
     order.buyer = {name: 'Joaquin', email: 'joaquinunez2004@gmail.com', phone: '123456789'}
     order.total = totalPrice()
 
@@ -22,6 +27,7 @@ const Cart = () => {
 
       return {id, name, price}
   })
+  order.date = {year, month, day}
 
   const db = getFirestore()
   const orderCollection = collection(db, 'orders')
@@ -29,8 +35,8 @@ const Cart = () => {
   addDoc(orderCollection, order)
     .then(resp=>{
       console.log(resp)
-      let orderId = resp.id
-      return orderId
+      setOrderId(resp.id)
+      
     })
     .catch(err=>console.log(err))
     //.finally(()=>clearCart())
@@ -63,7 +69,13 @@ const Cart = () => {
       <button onClick={generateOrder}>Terminar compra</button>
       :
       <>
-      <h2>Tu numero de orden es: {orderId}</h2>
+      <h2>Tu numero de orden es: </h2>
+      {
+      orderId === 0? 
+      <LoadingSpinnet/>
+      :
+      <h2>{orderId}</h2>    
+      }
       </>
       }
       
