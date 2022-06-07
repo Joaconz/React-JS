@@ -1,10 +1,10 @@
+import React from "react";
 import Item from "../Item/Item"
-import { memo } from "react";
 import LoadingSpinnet from "../../Helpers/LoadingSpinnet";
 
 
 
-const ItemList = memo(({products}) => {
+const ItemList = ({products}) => {
 
   return (
     <div className="product-list-container">
@@ -32,8 +32,9 @@ const ItemList = memo(({products}) => {
         )}
     </div>
   );
-}, (oldProps, newProps) => oldProps.products.length === newProps.products.length
-)
+        }
+
+
 
 
 export default ItemList
