@@ -1,6 +1,5 @@
 import React from "react";
 import { useState } from "react";
-import { Button } from "react-bootstrap";
 
 const ItemCount = ({ stock, initial, onAdd}) => {
 
@@ -27,13 +26,13 @@ const ItemCount = ({ stock, initial, onAdd}) => {
 
 
     return (
-        <>
-
-            <Button variant="dark" onClick={resta}>-</Button>
-            <span style={{margin:10}}>{cant}</span>
-            <Button variant="dark" onClick={suma}>+</Button> 
-            <Button variant="dark" onClick={()=>onAdd(cant)}>Agregar al carrito</Button>
-        </>
+        <div className="flex">     
+            <span className="leading-relaxed my-1">Quantity:</span>
+            <button class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded mr-3" onClick={resta}>-</button>
+            <span className="title-font font-medium text-2xl text-gray-900 text-center mt-1">{cant}</span>
+            <button class="flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded ml-7" onClick={suma}>+</button>
+            <button class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" onClick={()=>onAdd(cant)}>Add to cart</button>
+        </div>
     )
 }
 

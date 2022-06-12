@@ -3,47 +3,41 @@ import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import * as IoIcons from 'react-icons/io';
 
-export const SidebarData = [
+export const Links = [
   {
-    title: 'Inicio',
+    title: 'Home',
     path: '/',
     icon: <AiIcons.AiFillHome />,
-    cName: 'nav-text'
   },
   {
     title: 'Mouse',
-    path: '/categoria/mouse',
+    path: '/category/Mouse',
     icon: <IoIcons.IoIosPaper />,
-    cName: 'nav-text'
   },
   {
     title: 'Mousepads',
-    path: '/categoria/mousepads',
+    path: '/category/Mousepads',
     icon: <FaIcons.FaCartPlus />,
     cName: 'nav-text'
   },
   {
-    title: 'Teclados',
-    path: '/categoria/teclados',
+    title: 'Keyboards',
+    path: '/category/Keyboards',
     icon: <IoIcons.IoMdPeople />,
-    cName: 'nav-text'
   },
   {
-    title: 'Auriculares',
-    path: '/categoria/auriculares',
+    title: 'Headphones',
+    path: '/category/Headphones',
     icon: <FaIcons.FaEnvelopeOpenText />,
-    cName: 'nav-text'
   },
   {
-    title: 'Iluminacion LED',
-    path: '/categoria/luces',
+    title: 'LED Ilumination',
+    path: '/category/Ilumination',
     icon: <FaIcons.FaEnvelopeOpenText />,
-    cName: 'nav-text'
   },
   {
-    title: 'Sobre nosotros',
-    path: '/sobre-nosotros',
+    title: 'About',
+    path: '/about',
     icon: <IoIcons.IoMdHelpCircle />,
-    cName: 'nav-text'
   }
 ];
