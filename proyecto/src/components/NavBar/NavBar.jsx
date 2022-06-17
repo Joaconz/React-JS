@@ -4,6 +4,7 @@ import CartWidget from "../CartWidget/CartWidget";
 import { BiMenu } from 'react-icons/bi';
 import { SiZendesk } from 'react-icons/si';
 import { Links } from "../Links/Links";
+import DropDown from "./DropDown";
 
 
 function NavBar() {
@@ -40,6 +41,10 @@ function NavBar() {
         <Link to='/about' className='text-gray-800 hover:text-gray-400 duration-500	no-underline'>
                 About
               </Link>
+        </li>
+
+        <li key='products' className='md:ml-8 text-xl md:my-0 my-7'>
+          <DropDown/>
         </li>
 
         {

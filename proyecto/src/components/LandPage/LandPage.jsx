@@ -5,37 +5,37 @@ const LandPage = () => {
   return (
     <div className='mt-5'>
     <Carousel>
-    <Carousel.Item interval={1000}>
+    <Carousel.Item interval={2000}>
       <img
-        className="d-block w-100"
-        src="https://www.unfe.org/wp-content/uploads/2019/04/SM-placeholder.png"
+        className="d-block w-100 h-30"
+        src="https://www.profesionalreview.com/wp-content/uploads/2020/11/Escritorio-GXT-1190-Magnicus.png"
         alt="First slide"
       />
       <Carousel.Caption>
-        <h3>First slide label</h3>
-        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+        <h3>IMPROVE</h3>
+        <p>your gaming experience</p>
       </Carousel.Caption>
     </Carousel.Item>
-    <Carousel.Item interval={500}>
+    <Carousel.Item interval={2000}>
       <img
-        className="d-block w-100"
-        src="https://www.unfe.org/wp-content/uploads/2019/04/SM-placeholder.png"
+        className="d-block w-100 h-30"
+        src="https://thegadgetflow.com/wp-content/uploads/2022/04/Razer-Huntsman-Mini-Analog-gaming-keyboard-01-1024x577.jpeg"
         alt="Second slide"
       />
       <Carousel.Caption>
-        <h3>Second slide label</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <h3>CUSTOM</h3>
+        <p>your leisure place</p>
       </Carousel.Caption>
     </Carousel.Item>
     <Carousel.Item>
       <img
-        className="d-block w-100"
-        src="https://www.unfe.org/wp-content/uploads/2019/04/SM-placeholder.png"
+        className="d-block w-100 h-30"
+        src="https://assets.spartangeek.com/cc/setups-gamers-baratos.jpg"
         alt="Third slide"
       />
       <Carousel.Caption>
-        <h3>Third slide label</h3>
-        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+        <h3>ENJOY</h3>
+        <p>your time gaming like a pro-player</p>
       </Carousel.Caption>
     </Carousel.Item>
   </Carousel>
