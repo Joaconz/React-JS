@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useContext } from "react";
 import { Badge, Button } from "react-bootstrap";
 import { BsFillBagFill } from "react-icons/bs";
@@ -7,13 +7,12 @@ import { CartContext } from "../../context/CartContext";
 
 const CartWidget = () => {
   const cartContext = useContext(CartContext);
-  const { quantityInCart } = cartContext;
-  
+  const { quantityInCart, openCart } = cartContext;
 
   return (
     <>
       <Link to="/cart">
-        <Button variant="primary">
+        <Button variant="primary" onClick={openCart}>
           <BsFillBagFill />
           {quantityInCart() > 0? 
           

@@ -7,6 +7,7 @@ const CartProvider = (props) => {
   const [cart, setCart] = useState([]);
   const [quantityCart, setQuantityCart] = useState(0);
   const [total, setTotal] = useState()
+  const [optionSelected, setOptionSelected] =useState(0);
 
   //anadir al carrito
   const addToCart = (item, cant, id) => {
@@ -49,9 +50,14 @@ const CartProvider = (props) => {
     return cart.reduce ((counter, products) => counter += (products.cant * products.price), 0)
   }
 
+const selectOptions = (option) => {
+  setOptionSelected(option)
+  console.log(optionSelected)
+}
+
   return (
     <>
-      <CartContext.Provider value={{ cart, addToCart, clearCart, removeItem, quantityCart, quantityInCart, totalPrice }}>
+      <CartContext.Provider value={{ cart, addToCart, clearCart, removeItem, quantityCart, quantityInCart, totalPrice, selectOptions, optionSelected}}>
         {props.children}
       </CartContext.Provider>
     </>

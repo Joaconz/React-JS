@@ -1,95 +1,123 @@
 import React from "react";
 import { addDoc, collection, getFirestore } from "firebase/firestore";
-import { useContext, useState } from "react";
+import { useContext, useState, Fragment } from "react";
 import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
 import LoadingSpinnet from "../../Helpers/LoadingSpinnet";
+import { BsCartX } from 'react-icons/bs';
 
 const Cart = () => {
   const cartContext = useContext(CartContext);
-  const { cart, removeItem, clearCart, totalPrice } = cartContext;
-  const [orderGenerated, setOrderGenerated] = useState(false)
-  const [orderId, setOrderId] = useState(0)
+  const { cart, removeItem, clearCart, totalPrice, setOpen, open } =
+    cartContext;
+  const [orderGenerated, setOrderGenerated] = useState(false);
+  const [orderId, setOrderId] = useState(0);
 
   function generateOrder() {
-    let order = {}
-    const date = new Date()
-    const [month, day, year] = [date.getMonth() + 1, date.getDate(), date.getFullYear()];
+    let order = {};
+    const date = new Date();
+    const [month, day, year] = [
+      date.getMonth() + 1,
+      date.getDate(),
+      date.getFullYear(),
+    ];
 
-    order.buyer = {name: 'Joaquin', email: 'joaquinunez2004@gmail.com', phone: '123456789'}
-    order.total = totalPrice()
+    order.buyer = {
+      name: "Joaquin",
+      email: "joaquinunez2004@gmail.com",
+      phone: "123456789",
+    };
+    order.total = totalPrice();
 
-    order.items = cart.map (item=>{
-      const id = item.id
-      const name = item.tittle
-      const price = item.price * item.cant
+    order.items = cart.map((item) => {
+      const id = item.id;
+      const name = item.tittle;
+      const price = item.price * item.cant;
 
-      return {id, name, price}
-  })
-  order.date = {year, month, day}
+      return { id, name, price };
+    });
+    order.date = { year, month, day };
 
-  const db = getFirestore()
-  const orderCollection = collection(db, 'orders')
+    const db = getFirestore();
+    const orderCollection = collection(db, "orders");
 
-  addDoc(orderCollection, order)
-    .then(resp=>{
-      console.log(resp)
-      setOrderId(resp.id)
-      
-    })
-    .catch(err=>console.log(err))
+    addDoc(orderCollection, order)
+      .then((resp) => {
+        console.log(resp);
+        setOrderId(resp.id);
+      })
+      .catch((err) => console.log(err));
     //.finally(()=>clearCart())
 
-    setOrderGenerated(true)
-  
+    setOrderGenerated(true);
   }
 
   return (
     <>
-    {cart.length > 0? 
-    <>
-     {cart.map((prod) => (
-<>
-<div class="flex font-sans">
-<div class="flex-none w-48 relative">
-  <img src="/classic-utility-jacket.jpg" alt="" class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
-</div>
-<form class="flex-auto p-6">
-  <div class="flex flex-wrap">
-    <h1 class="flex-auto text-lg font-semibold text-slate-900">
-      {prod.title}
-    </h1>
-    <div class="text-lg font-semibold text-slate-500">
-      {prod.price}
-    </div>
-  </div>
-  <div class="flex items-baseline mt-4 mb-6 pb-6 border-b border-slate-200">
-  </div>
-  <div class="flex space-x-4 mb-6 text-sm font-medium">
-    <div class="flex-auto flex space-x-4">
-      <button class="h-10 px-6 font-semibold rounded-md bg-black text-white" type="button">
-        Remove
-      </button>
-      <button class="h-10 px-6 font-semibold rounded-md border border-slate-200 text-slate-900" type="button">
-        quantity
-      </button>
-    </div>
-    <button class="flex-none flex items-center justify-center w-9 h-9 rounded-md text-slate-300 border border-slate-200" type="button" aria-label="Like">
-      <svg width="20" height="20" fill="currentColor" aria-hidden="true">
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" />
-      </svg>
-    </button>
-  </div>
-</form>
-</div>
-
- 
-</>
-
-
-       
+      {cart.length>0?
+    <div className="mt-20 flex flex-col max-w-none p-6 space-y-4 sm:p-10 dark:text-gray-900">
+	<h2 className="text-xl font-semibold">Your cart</h2>
+	<ul className="flex flex-col divide-y divide-gray-700">
+  {cart.map((prod) => (
+		<li className="flex flex-col py-6 sm:flex-row sm:justify-between">
+			<div className="flex w-full space-x-2 sm:space-x-4">
+				<img className="flex-shrink-0 object-cover w-20 h-20 dark:border-transparent rounded outline-none sm:w-32 sm:h-32 dark:bg-gray-500" src={prod.image}/>
+				<div className="flex flex-col justify-between w-full pb-4">
+					<div className="flex justify-between w-full pb-2 space-x-2">
+						<div className="space-y-1">
+							<h3 className="text-lg font-semibold leading-snug sm:pr-8">{prod.tittle}</h3>
+							<p className="text-sm dark:text-gray-400">Color: {prod.color}</p>
+						</div>
+						<div className="text-right">
+							<p className="text-lg font-semibold">${prod.price}</p>
+						</div>
+					</div>
+					<div className="flex text-sm divide-x">
+						<button type="button" className="flex items-center px-2 py-1 pl-0 space-x-1" onClick={()=>removeItem(prod.id)}>
+							<BsCartX/>
+							<span>Remove</span>
+						</button>
+						<button className="flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded-l ml-7">-</button>
+            <span className="flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none">{prod.cant}</span>
+            <button className="flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded-r mr-7">+</button>
+					</div>
+				</div>
+			</div>
+		</li>
       ))}
+	</ul>
+	<div className="space-y-1 text-right">
+		<p>Total: 
+			<span className="font-semibold"> ${totalPrice()}</span>
+		</p>
+		<p className="text-sm dark:text-gray-400">Not including taxes and shipping costs</p>
+	</div>
+	<div className="flex justify-end space-x-4">
+    <Link to='/' className="no-underline">
+    <button className="flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded ml-7">Back to shop</button>
+    </Link>
+		
+    <Link to='/' className="no-underline">
+    <button className="flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded ml-7">Checkout</button>
+    </Link>
+
+	</div>
+    </div>
+    :
+    <div className="mt-50 text-center">
+    <h2>no has agregado nada a tu carrito</h2>
+    <Link to='/' className="no-underline">
+      <button className="flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded ml-7">Back to shop</button>
+    </Link>
+    </div>
+    }
+
+
+
+
+      {/*
+    
       <h2>Total: {totalPrice()}$</h2>
       {orderGenerated === false? 
       <button onClick={generateOrder}>Terminar compra</button>
@@ -102,23 +130,17 @@ const Cart = () => {
       :
       <h2>{orderId}</h2>    
       }
+      
       </>
       }
       
       <button onClick={clearCart}>Vaciar carrito</button>
-  
-      </>
-    : 
-    <>
-    <h3>Todavia no has agregado nada al carrito</h3>
-    <Link to='/'>
-      <Button>Productos</Button>
-    </Link>
+      
+      </div>
+      </div>
+   
+  */}
     </>
-    }
-    </>
-    
-    
   );
 };
 
