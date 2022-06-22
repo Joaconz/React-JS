@@ -6,14 +6,15 @@ export const CartContext = createContext();
 const CartProvider = (props) => {
   const [cart, setCart] = useState([]);
   const [quantityCart, setQuantityCart] = useState(0);
-  const [total, setTotal] = useState()
-  const [optionSelected, setOptionSelected] =useState(0);
+  const [total, setTotal] = useState();
+  const [optionSelected, setOptionSelected] = useState(0);
+  const [form, setForm] = useState(false);
 
   //anadir al carrito
   const addToCart = (item, cant, id) => {
     const newItem = { ...item, cant };
     isInCart(id, newItem);
-    console.log(cart)
+    console.log(cart);
   };
 
   //vaciar carrito
@@ -25,8 +26,20 @@ const CartProvider = (props) => {
 
   //eliminar item del carrito
   const removeItem = (id) => {
-    const filtrado = cart.filter((prod) => prod.id !== id);
-    setCart(filtrado);
+    const filter = cart.filter((prod) => prod.id !== id);
+    setCart(filter);
+  };
+
+  //cambiar cantidad
+  const changeQuantity = (id, item, newCant) => {
+    /*const changed = cart.findIndex((product) => product.id === id);
+    const oldCant = cart[changed].cant;
+    const newCart = cart.filter((prod) => prod.id !== newItem.id);
+    item.cant = oldCant + newCant;
+    setCart([...newCart, newItem]);
+    console.log(cart)    
+    console.log(changed);
+    console.log(newCant)*/
   };
 
   const isInCart = (id, newItem) => {
@@ -42,22 +55,39 @@ const CartProvider = (props) => {
   };
 
   const quantityInCart = () => {
-    return cart.reduce ((counter, products) => counter += products.cant, 0)
-    
-  }
+    return cart.reduce((counter, products) => (counter += products.cant), 0);
+  };
 
   const totalPrice = () => {
-    return cart.reduce ((counter, products) => counter += (products.cant * products.price), 0)
-  }
+    return cart.reduce(
+      (counter, products) => (counter += products.cant * products.price),
+      0
+    );
+  };
 
-const selectOptions = (option) => {
-  setOptionSelected(option)
-  console.log(optionSelected)
-}
+  const selectOptions = (option) => {
+    setOptionSelected(option);
+    console.log(optionSelected);
+  };
 
   return (
     <>
-      <CartContext.Provider value={{ cart, addToCart, clearCart, removeItem, quantityCart, quantityInCart, totalPrice, selectOptions, optionSelected}}>
+      <CartContext.Provider
+        value={{
+          cart,
+          addToCart,
+          clearCart,
+          removeItem,
+          quantityCart,
+          quantityInCart,
+          totalPrice,
+          selectOptions,
+          optionSelected,
+          changeQuantity,
+          form,
+          setForm
+        }}
+      >
         {props.children}
       </CartContext.Provider>
     </>

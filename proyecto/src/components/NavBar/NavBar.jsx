@@ -32,32 +32,22 @@ function NavBar() {
 
       <ul className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-white md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${open ? 'top-20 ':'top-[-490px]'}`}>
         <li key='Home' className='md:ml-8 text-xl md:my-0 my-7'>
-        <Link to='/' className='text-gray-800 hover:text-gray-400 duration-500 	no-underline'>
+          <Link to='/' className='text-gray-800 hover:text-gray-400 duration-500 no-underline'>
                 Home
-              </Link>
+            </Link>
         </li>
 
         <li key='About' className='md:ml-8 text-xl md:my-0 my-7'>
-        <Link to='/about' className='text-gray-800 hover:text-gray-400 duration-500	no-underline'>
-                About
-              </Link>
+            <Link to='/about' className='text-gray-800 hover:text-gray-400 duration-500	no-underline'>
+               About
+            </Link>
         </li>
 
         <li key='products' className='md:ml-8 text-xl md:my-0 my-7'>
           <DropDown/>
         </li>
-
-        {
-          Links.map((link)=>(
-            <li key={link.title} className='md:ml-8 text-xl md:my-0 my-7'>
-              <Link to={link.path} className='text-gray-800 hover:text-gray-400 duration-500 	no-underline'>
-                {link.title}
-              </Link>
-            </li>
-          ))
-          }
         
-        <li> 
+        <li key='cartWidget' className='md:ml-8 text-xl md:my-0 my-7'> 
         <CartWidget />
         </li>
       </ul>

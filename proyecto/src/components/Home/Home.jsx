@@ -1,4 +1,5 @@
 import React from 'react'
+import About from '../About/About'
 import Categories from '../Categories/Categories'
 import Footer from '../Footer/Footer'
 import ItemListContainer from '../ItemListContainer/ItemListContainer'

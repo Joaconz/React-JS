@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useContext } from "react";
 import { Badge, Button } from "react-bootstrap";
-import { BsFillBagFill } from "react-icons/bs";
+import { BsBag } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
 
@@ -11,23 +11,21 @@ const CartWidget = () => {
 
   return (
     <>
-      <Link to="/cart">
-        <Button variant="primary" onClick={openCart}>
-          <BsFillBagFill />
+      <Link to="/cart" className="text-gray-800 hover:text-gray-400 duration-500 no-underline flex text-center">
+        <button onClick={openCart} 
+        className=' w-auto mt-1.5 flex'>
+          <BsBag />
           {quantityInCart() > 0? 
           
-          (<Badge bg="secondary">{
+          (<span className="ml-1 mt-0 pb-0">{
           quantityInCart()
-          }</Badge>)
+          }</span>)
           
           : 
           (<></>)
           
           }
-          
-          
-          
-        </Button>
+        </button>
         
       </Link>
     </>

@@ -4,54 +4,14 @@ import { useContext, useState, Fragment } from "react";
 import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
-import LoadingSpinnet from "../../Helpers/LoadingSpinnet";
-import { BsCartX } from 'react-icons/bs';
+import { BsBagDash } from 'react-icons/bs';
+import ModifyQuantity from "../../Helpers/ModifyQuantity";
+import FormToBuy from "../Form/Form";
 
 const Cart = () => {
   const cartContext = useContext(CartContext);
-  const { cart, removeItem, clearCart, totalPrice, setOpen, open } =
-    cartContext;
-  const [orderGenerated, setOrderGenerated] = useState(false);
-  const [orderId, setOrderId] = useState(0);
+  const { cart, removeItem, clearCart, totalPrice, form, setForm } = cartContext;
 
-  function generateOrder() {
-    let order = {};
-    const date = new Date();
-    const [month, day, year] = [
-      date.getMonth() + 1,
-      date.getDate(),
-      date.getFullYear(),
-    ];
-
-    order.buyer = {
-      name: "Joaquin",
-      email: "joaquinunez2004@gmail.com",
-      phone: "123456789",
-    };
-    order.total = totalPrice();
-
-    order.items = cart.map((item) => {
-      const id = item.id;
-      const name = item.tittle;
-      const price = item.price * item.cant;
-
-      return { id, name, price };
-    });
-    order.date = { year, month, day };
-
-    const db = getFirestore();
-    const orderCollection = collection(db, "orders");
-
-    addDoc(orderCollection, order)
-      .then((resp) => {
-        console.log(resp);
-        setOrderId(resp.id);
-      })
-      .catch((err) => console.log(err));
-    //.finally(()=>clearCart())
-
-    setOrderGenerated(true);
-  }
 
   return (
     <>
@@ -75,12 +35,10 @@ const Cart = () => {
 					</div>
 					<div className="flex text-sm divide-x">
 						<button type="button" className="flex items-center px-2 py-1 pl-0 space-x-1" onClick={()=>removeItem(prod.id)}>
-							<BsCartX/>
+							<BsBagDash/>
 							<span>Remove</span>
 						</button>
-						<button className="flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded-l ml-7">-</button>
-            <span className="flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none">{prod.cant}</span>
-            <button className="flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded-r mr-7">+</button>
+						<ModifyQuantity product={prod}/>
 					</div>
 				</div>
 			</div>
@@ -95,51 +53,28 @@ const Cart = () => {
 	</div>
 	<div className="flex justify-end space-x-4">
     <Link to='/' className="no-underline">
-    <button className="flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded ml-7">Back to shop</button>
+    <button className="flex text-white bg-gray-400 border-0 py-2 px-6 focus:outline-none hover:bg-gray-500 rounded ml-7">Back to shop</button>
     </Link>
 		
-    <Link to='/' className="no-underline">
-    <button className="flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded ml-7">Checkout</button>
-    </Link>
+    
+    <button className="flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded ml-7" onClick={()=>setForm(!form)}>Checkout</button>
+
 
 	</div>
+  {form?
+    <FormToBuy/>
+    :
+    <></>
+  }
     </div>
     :
     <div className="mt-50 text-center">
-    <h2>no has agregado nada a tu carrito</h2>
+    <h2>No has agregado nada a tu carrito</h2>
     <Link to='/' className="no-underline">
       <button className="flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded ml-7">Back to shop</button>
     </Link>
     </div>
     }
-
-
-
-
-      {/*
-    
-      <h2>Total: {totalPrice()}$</h2>
-      {orderGenerated === false? 
-      <button onClick={generateOrder}>Terminar compra</button>
-      :
-      <>
-      <h2>Tu numero de orden es: </h2>
-      {
-      orderId === 0? 
-      <LoadingSpinnet/>
-      :
-      <h2>{orderId}</h2>    
-      }
-      
-      </>
-      }
-      
-      <button onClick={clearCart}>Vaciar carrito</button>
-      
-      </div>
-      </div>
-   
-  */}
     </>
   );
 };

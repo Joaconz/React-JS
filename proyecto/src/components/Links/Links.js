@@ -22,6 +22,11 @@ export const Links = [
     image: 'https://i.pcmag.com/imagery/roundups/06mfEWu5s7pyKh9K3j8z8G8-10..v1654106057.jpg',
   },
   {
+    title: 'Controllers',
+    path: '/category/Controllers',
+    image: 'https://thegadgetflow.com/wp-content/uploads/2021/09/custom-controllers-featured-image.jpg',
+  },
+  {
     title: 'LED Ilumination',
     path: '/category/Ilumination',
     image: 'https://i.pinimg.com/originals/e1/f6/b1/e1f6b1aa65ac8e2297bcf9902f95e1f2.jpg',
