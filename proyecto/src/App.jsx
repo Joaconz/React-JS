@@ -17,7 +17,7 @@ function App() {
 		<CartProvider>
 			<BrowserRouter>
 				<div className="App">
-					<NavBar/>
+					<NavBar className='sticky'/>
 					<Routes>
 						<Route path='/' element = {<Home/>} />	
 						<Route path='/about' element = {<About/>} />						

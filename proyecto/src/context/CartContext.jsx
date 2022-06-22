@@ -9,6 +9,7 @@ const CartProvider = (props) => {
   const [total, setTotal] = useState();
   const [optionSelected, setOptionSelected] = useState(0);
   const [form, setForm] = useState(false);
+  const [Cant, setCant] = useState();
 
   //anadir al carrito
   const addToCart = (item, cant, id) => {
@@ -31,15 +32,13 @@ const CartProvider = (props) => {
   };
 
   //cambiar cantidad
-  const changeQuantity = (id, item, newCant) => {
-    /*const changed = cart.findIndex((product) => product.id === id);
-    const oldCant = cart[changed].cant;
-    const newCart = cart.filter((prod) => prod.id !== newItem.id);
-    item.cant = oldCant + newCant;
-    setCart([...newCart, newItem]);
+  const changeQuantity = (id, newCant) => {
+    const changed = cart.findIndex((product) => product.id === id);
+    cart[changed].cant = newCant;
     console.log(cart)    
-    console.log(changed);
-    console.log(newCant)*/
+    console.log(cart[changed].cant)
+    console.log(newCant)
+    setCart([...cart]);
   };
 
   const isInCart = (id, newItem) => {

@@ -4,14 +4,8 @@ import { CartContext } from "../context/CartContext";
 
 const ModifyQuantity = ({ product }) => {
   const cartContext = useContext(CartContext);
-  const { removeItem, changeQuantity } = cartContext;
+  const { removeItem, changeQuantity, quantityInCart } = cartContext;
   const [cant, setCant] = useState(product.cant);
-
-  useEffect(() => {
-    changeQuantity(product.id, cant);
-  }, [cant]);
-
-  console.log(product.cant);
 
   const notify = (text) =>
     toast(text, {
@@ -19,23 +13,24 @@ const ModifyQuantity = ({ product }) => {
       className: "foo-bar",
     });
 
+    useEffect(() => {
+      changeQuantity(product.id, cant)
+    }, [cant])
+    
+
   const suma = () => {
     if (product.cant < product.stock) {
-      setCant(product.cant + 1);
-      changeQuantity(product.id, cant);
+      setCant(cant + 1);
     } else {
-      console.log("no hay mas stock del producto");
       notify("No hay mas stock!");
     }
   };
 
   const resta = () => {
     if (product.cant > 1) {
-      setCant(product.cant - 1);
+      setCant(cant - 1);
     } else {
       removeItem(product.id);
-      console.log("no se puede comprar menos de 1 producto");
-      notify("No puedes comprar menos de 1 producto!");
     }
   };
 

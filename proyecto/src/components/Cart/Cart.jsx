@@ -68,12 +68,16 @@ const Cart = () => {
   }
     </div>
     :
-    <div className="mt-50 text-center">
+    <div className="relative h-32 w-32 m-auto">
+
+  <div class="absolute inset-x-0 bottom-0 h-16">
+
     <h2>No has agregado nada a tu carrito</h2>
     <Link to='/' className="no-underline">
       <button className="flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded ml-7">Back to shop</button>
     </Link>
     </div>
+</div>
     }
     </>
   );
