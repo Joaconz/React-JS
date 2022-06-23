@@ -14,3 +14,4 @@ El proyecto consiste en un E-commerce de productos y accesorios para personaliza
 * Toastify // crea alertas personalizadas para indicar que se agregó un producto al carrito
 * Sweet Alert // crea alertas personalizadas para confirmar la compra e indicar el número de compra
 * Tailwind CSS // se basa en el diseño de los componentes
+* React Bootstrap // ayuda al diseño de los componentes
