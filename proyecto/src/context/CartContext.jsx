@@ -13,7 +13,6 @@ const CartProvider = (props) => {
   const addToCart = (item, cant, id) => {
     const newItem = { ...item, cant };
     isInCart(id, newItem);
-    console.log(cart);
   };
 
   //vaciar carrito
@@ -33,9 +32,6 @@ const CartProvider = (props) => {
   const changeQuantity = (id, newCant) => {
     const changed = cart.findIndex((product) => product.id === id);
     cart[changed].cant = newCant;
-    console.log(cart)    
-    console.log(cart[changed].cant)
-    console.log(newCant)
     setCart([...cart]);
   };
 
