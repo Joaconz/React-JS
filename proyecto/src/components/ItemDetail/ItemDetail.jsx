@@ -1,6 +1,5 @@
 import React from "react";
-import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 import LoadingSpinnet from "../../Helpers/LoadingSpinnet";
 import ItemCount from "../ItemCount/ItemCount";

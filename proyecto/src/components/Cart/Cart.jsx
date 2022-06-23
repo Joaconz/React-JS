@@ -1,7 +1,5 @@
 import React from "react";
-import { addDoc, collection, getFirestore } from "firebase/firestore";
-import { useContext, useState, Fragment } from "react";
-import { Button, Card } from "react-bootstrap";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
 import { BsBagDash } from "react-icons/bs";

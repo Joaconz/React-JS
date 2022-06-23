@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import { useContext } from "react";
-import { Badge, Button } from "react-bootstrap";
 import { BsBag } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";

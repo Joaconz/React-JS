@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import CartWidget from "../CartWidget/CartWidget";
 import { BiMenu } from 'react-icons/bi';
 import { SiZendesk } from 'react-icons/si';
-import { Links } from "../Links/Links";
 import DropDown from "./DropDown";
 
 
