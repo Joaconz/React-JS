@@ -15,3 +15,6 @@ El proyecto consiste en un E-commerce de productos y accesorios para personaliza
 * Sweet Alert // crea alertas personalizadas para confirmar la compra e indicar el número de compra
 * Tailwind CSS // se basa en el diseño de los componentes
 * React Bootstrap // ayuda al diseño de los componentes
+
+## Link de video de funcionamiento
+https://drive.google.com/file/d/1oC6AOSALdFeurAC3tGd3m_IUqo2cCuE_/view?usp=sharing
