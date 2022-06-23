@@ -7,9 +7,7 @@ const CartProvider = (props) => {
   const [cart, setCart] = useState([]);
   const [quantityCart, setQuantityCart] = useState(0);
   const [total, setTotal] = useState();
-  const [optionSelected, setOptionSelected] = useState(0);
   const [form, setForm] = useState(false);
-  const [Cant, setCant] = useState();
 
   //anadir al carrito
   const addToCart = (item, cant, id) => {
@@ -64,10 +62,6 @@ const CartProvider = (props) => {
     );
   };
 
-  const selectOptions = (option) => {
-    setOptionSelected(option);
-    console.log(optionSelected);
-  };
 
   return (
     <>
@@ -80,8 +74,6 @@ const CartProvider = (props) => {
           quantityCart,
           quantityInCart,
           totalPrice,
-          selectOptions,
-          optionSelected,
           changeQuantity,
           form,
           setForm
