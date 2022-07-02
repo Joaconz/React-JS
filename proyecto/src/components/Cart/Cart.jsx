@@ -18,7 +18,7 @@ const Cart = () => {
           <h2 className="text-xl font-semibold">Your cart</h2>
           <ul className="flex flex-col divide-y divide-gray-700">
             {cart.map((prod) => (
-              <li className="flex flex-col py-6 sm:flex-row sm:justify-between">
+              <li key={prod.tittle} className="flex flex-col py-6 sm:flex-row sm:justify-between">
                 <div className="flex w-full space-x-2 sm:space-x-4">
                   <img
                     className="flex-shrink-0 object-cover w-20 h-20 dark:border-transparent rounded outline-none sm:w-32 sm:h-32 dark:bg-gray-500"
@@ -76,12 +76,16 @@ const Cart = () => {
             >
               Checkout
             </button>
+
+            <button className="flex text-white bg-gray-400 border-0 py-2 px-6 focus:outline-none hover:bg-gray-500 rounded ml-7" onClick={clearCart}>
+                Clear cart
+              </button>
           </div>
           {form ? <FormToBuy /> : <></>}
         </div>
       ) : (
         <div className="relative h-32 w-50 text-center m-auto">
-          <div class="absolute inset-x-0 bottom-0 h-1 w-100">
+          <div className="absolute inset-x-0 bottom-0 h-1 w-100">
             <h2>No has agregado nada a tu carrito</h2>
             <Link to="/" className="no-underline inline-block">
               <button className="flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded ml-7">

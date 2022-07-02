@@ -17,19 +17,19 @@ const Footer = () => {
 
 
 <ul className="flex flex-wrap items-center mb-6 text-sm text-gray-500 sm:mb-0 dark:text-gray-400">
-<li>
+<li key='home'>
   <Link to='/' className="mr-4 hover:underline md:mr-6"> 
     Home
   </Link>
 </li>
-<li>
+<li key='about'>
   <Link to='/about' className="mr-4 hover:underline md:mr-6"> 
     About
   </Link>
 </li>  
 {Links.map((link)=>{
   return(
-      <li className="mr-4 hover:underline md:mr-6">
+      <li key={link.title} className="mr-4 hover:underline md:mr-6">
       <Link to={link.path}>{link.title}</Link>
       </li>
   )

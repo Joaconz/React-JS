@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const Links = [
   {
     title: 'Mouse',
@@ -9,7 +7,7 @@ export const Links = [
   {
     title: 'Mousepads',
     path: '/category/Mousepads',
-    image: 'https://www.masgamers.com/wp-content/uploads/2020/05/Razer-foto-3.jpg',
+    image: 'https://www.tiendadiggit.com.ar/Image/0/750_750-MOUSEPAD_RAZER_FIREFLY_3.jpg',
   },
   {
     title: 'Keyboards',

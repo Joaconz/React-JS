@@ -65,9 +65,9 @@ export default function FormToBuy() {
     <>
       <div
         id="defaultModal"
-        tabindex="-1"
+        tabIndex="-1"
         aria-hidden="true"
-        class=" overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center ml-auto "
+        class=" overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center ml-20 mx-20 "
       >
         <div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
           <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
@@ -94,7 +94,7 @@ export default function FormToBuy() {
                     onChange={handleInputChange}
                   />
                   <label
-                    for="email"
+                    htmlFor="email"
                     class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-8 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8"
                   >
                     Email address
@@ -111,7 +111,7 @@ export default function FormToBuy() {
                       onChange={handleInputChange}
                     />
                     <label
-                      for="name"
+                      htmlFor="name"
                       class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-8 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8"
                     >
                       First name
@@ -127,7 +127,7 @@ export default function FormToBuy() {
                       onChange={handleInputChange}
                     />
                     <label
-                      for="lastName"
+                      htmlFor="lastName"
                       class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-8 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8"
                     >
                       Last name
@@ -146,7 +146,7 @@ export default function FormToBuy() {
                       onChange={handleInputChange}
                     />
                     <label
-                      for="phone"
+                      htmlFor="phone"
                       class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-8 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8"
                     >
                       Phone number (123-456-7890)
@@ -162,7 +162,7 @@ export default function FormToBuy() {
                       onChange={handleInputChange}
                     />
                     <label
-                      for="grid-zip"
+                      htmlFor="grid-zip"
                       class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-8 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8"
                     >
                       Zip
