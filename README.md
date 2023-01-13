@@ -20,4 +20,4 @@ El proyecto consiste en un E-commerce de productos y accesorios para personaliza
 ## Link de video de funcionamiento
 https://drive.google.com/file/d/1oC6AOSALdFeurAC3tGd3m_IUqo2cCuE_/view?usp=sharing
 ## Deploy
-La pagina se encuentra alojada en el siguiente link: https://dulcet-melba-827030.netlify.app/
+La pagina se encuentra alojada en el siguiente link: https://custom-your-desk.vercel.app/
